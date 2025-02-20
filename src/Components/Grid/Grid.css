@@ -1,3 +1,9 @@
 Grid {
   padding: 10px;
 }
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

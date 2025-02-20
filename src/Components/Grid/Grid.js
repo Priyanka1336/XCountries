@@ -27,15 +27,20 @@ export default function Grid1() {
 
   console.log(data);
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        {data.map((flagData, index) => (
-          <Grid item xs={2} key={index}>
-            <Card data={flagData} />
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+    // <Box sx={{ flexGrow: 1 }}>
+    //   <Grid container spacing={2}>
+    //     {data.map((flagData, index) => (
+    //       <Grid item xs={2} key={index}>
+    //         <Card data={flagData} />
+    //       </Grid>
+    //     ))}
+    //   </Grid>
+    // </Box>
+    <div className="grid">
+      {data.map((flagData, index) => (
+        <Card data={flagData} />
+      ))}
+    </div>
   );
   //   isLoading ? (
   // <h1>Loading Flags </h1>
