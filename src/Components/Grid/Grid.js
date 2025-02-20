@@ -8,27 +8,25 @@ import "./Grid.css";
 
 export default function Grid1() {
   const [data, setData] = useState([]);
-  const [isLoading, setisLoading] = useState(false);
+  //   const [isLoading, setisLoading] = useState(false);
   useEffect(() => {
     const getData = async () => {
       try {
-        setisLoading(true);
+        // setisLoading(true);
         const response = await axios.get(
           "https://xcountries-backend.azurewebsites.net/all"
         );
         setData(response.data);
-        setisLoading(false);
+        // setisLoading(false);
       } catch (error) {
-        console.log(error);
+        console.error("Error catching data:");
       }
     };
     getData();
   }, []);
 
   console.log(data);
-  return isLoading ? (
-    <h1>Loading Flags </h1>
-  ) : (
+  return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         {data.map((flagData, index) => (
@@ -39,4 +37,7 @@ export default function Grid1() {
       </Grid>
     </Box>
   );
+  //   isLoading ? (
+  // <h1>Loading Flags </h1>
+  //   ) : (
 }
