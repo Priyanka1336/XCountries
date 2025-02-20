@@ -19,7 +19,7 @@ export default function Grid1() {
         setData(response.data);
         // setisLoading(false);
       } catch (error) {
-        console.error("Error catching data:");
+        console.error("Error fetching data:");
       }
     };
     getData();
