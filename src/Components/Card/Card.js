@@ -3,9 +3,9 @@ import "./Card.css";
 
 export default function OutlinedCard({ data }) {
   return (
-    <div className="box">
-      <img src={data.flag} alt={data.name} className="image" />
-      <h3>{data.name}</h3>
+    <div className="countryCard">
+      <img src={data.png} alt={data.png} className="image" />
+      <h3>{data.common}</h3>
     </div>
   );
 }

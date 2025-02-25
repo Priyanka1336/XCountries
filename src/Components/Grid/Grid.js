@@ -8,13 +8,14 @@ import "./Grid.css";
 
 export default function Grid1() {
   const [data, setData] = useState([]);
+  const [country, setCountry] = useState("");
   //   const [isLoading, setisLoading] = useState(false);
   useEffect(() => {
     const getData = async () => {
       try {
         // setisLoading(true);
         const response = await axios.get(
-          "https://xcountries-backend.azurewebsites.net/all"
+          "https://countries-search-data-prod-812920491762.asia-south1.run.app/countries"
         );
         setData(response.data);
         // setisLoading(false);
@@ -24,6 +25,14 @@ export default function Grid1() {
     };
     getData();
   }, []);
+
+  const handleChange = (event) => {
+    setCountry(event.target.value);
+  };
+
+  const filteredData = data.filter((flagData) =>
+    flagData.common.toLowerCase().includes(country.toLowerCase())
+  );
 
   console.log(data);
   return (
@@ -36,10 +45,23 @@ export default function Grid1() {
     //     ))}
     //   </Grid>
     // </Box>
-    <div className="grid">
-      {data.map((flagData, index) => (
-        <Card data={flagData} />
-      ))}
+    <div>
+      <input
+        type="text"
+        placeholder="Search for Countries"
+        value={country}
+        onChange={handleChange}
+        style={{ width: "60vw", height: "5vh" }}
+      />
+      <div className="grid">
+        {filteredData.length > 0 ? (
+          filteredData.map((flagData) => (
+            <Card key={flagData.common} data={flagData} />
+          ))
+        ) : (
+          <h3>No countries found</h3>
+        )}
+      </div>
     </div>
   );
   //   isLoading ? (
